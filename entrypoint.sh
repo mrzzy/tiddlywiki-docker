@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 #
-# tiddywiki-docker
+# tiddlywiki-docker
 # entrypoint script
 #
 

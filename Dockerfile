@@ -1,5 +1,5 @@
 #
-# tiddywiki-docker
+# tiddlywiki-docker
 # container Dockerfile
 #
 
