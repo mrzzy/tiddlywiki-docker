@@ -1,21 +1,6 @@
 # tiddywiki-docker
 Tiddlywiki Node.js a docker container.
 
-## Introduction
-Bundles Tiddlywiki the following plugins:
-  - code mirror plugin
-  - github plugin
-  - markdown plugin
-  - formula plugin
-  - katex plugin
-  - relink wiki
-  - edit-comptext
-  - edit-autolist
-  - notebook theme
-  - TWCrosslinks
-  - Outliner Plugin
-
-
 ## Usage
 Start tiddywiki docker container listening on port `8080`:
 ```
