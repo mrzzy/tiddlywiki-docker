@@ -20,5 +20,5 @@ $(IMAGE): Dockerfile entrypoint.sh
 run:
 	docker run -it --init \
 		-p 8080:8080  \
-		-v $(pwd)/wiki:/wiki \
+		-v $(shell pwd)/wiki:/wiki \
 		$(IMAGE):$(IMAGE_TAG)
