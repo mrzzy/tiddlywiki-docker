@@ -1,6 +1,7 @@
 # tiddlywiki-docker
 Tiddlywiki Node.js a docker container.
 
+
 ## Usage
 Start tiddlywiki docker container listening on port `8080`:
 ```
@@ -11,8 +12,8 @@ docker run -it --init \
 ```
 
 ## Storage
-Tiddlywiki will persist tiddlers from the Docker container inside the `/wiki/` directory
-- Mount / Persist `\wiki` the preserve tiddlers across container restarts
+Tiddlywiki will persist tiddlers from the Docker container inside the `/wiki` directory
+- Mount / Persist `/wiki` the preserve tiddlers across container restarts
 
 ## Configuration
 Configuration of the container is done via environment variables:
@@ -22,7 +23,8 @@ Configuration of the container is done via environment variables:
 | `TIDDLYWIKI_READERS` | Comma separated list of usernames allowed to read from this wiki. |
 | `TIDDLYWIKI_WRITERS` | Comma separated list of usernames allowed to read from this wiki. |
 | `TIDDLYWIKI_USERNAME` & `TIDDLYWIKI_PASSWORD` | If set, configures tiddlywiki to use basic http authentication. |
-| `TIDDLYWIKI_DEBUG` | Whether to configure tiddlywiki to output debugging logs |
+| `TIDDLYWIKI_DEBUG` | Whether to configure tiddlywiki to output debugging logs. |
+| `TIDDLYWIKI_BARE` | If set does initizalise `/wiki` with the built in template. Instead initizalise `/wiki` as a bare bones tiddlywiki. |
 
 ## Versioning
 Containers are tagged with tags in the format:

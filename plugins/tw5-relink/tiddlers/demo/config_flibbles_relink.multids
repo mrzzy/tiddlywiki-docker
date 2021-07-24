@@ -1,0 +1,8 @@
+title: $:/config/flibbles/relink/
+
+fields/description: wikitext
+fields/example-filter: filter
+fields/example-list: list
+fields/example-title: title
+fields/example-wikitext: wikitext
+macros/ul/tag: title

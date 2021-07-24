@@ -21,6 +21,15 @@ RUN npm install -g tiddlywiki@5.1.23
 ENV WIKI_DIR=/wiki
 RUN mkdir ${WIKI_DIR}
 
+# copy wiki template, plugins & themes
+COPY template /template
+COPY plugins /plugins
+COPY themes /themes
+
+# define plugin, themes search path
+ENV TIDDLYWIKI_PLUGIN_PATH="/plugins:/themes"
+ENV TIDDLYWIKI_THEME_PATH="/themes"
+
 # copy entrypoint script
 COPY entrypoint.sh .
 

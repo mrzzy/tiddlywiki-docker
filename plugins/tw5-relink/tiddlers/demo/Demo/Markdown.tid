@@ -1,0 +1,21 @@
+description: Optionally, //Relink// fully supports markdown. It works seemlessly with any of the major markdown plugins.
+tags: Demo Supplemental
+type: text/x-markdown
+warning: Markdown support requires you to download the <<link-to-tab Plugins Plugins/Markdown "//Relink-markdown// supplimental plugin">>.
+
+Links: [Link to Frodo](#Frodo)  
+Footnotes[^^1^^]
+
+| Direct links | Footnotes |
+| ------------ | --------- |
+| ![Direct](Frodo.svg) | ![Footnote][image] |
+
+### Wikitext
+
+If your markdown plugin supports ~WikiText, so does Relink.
+
+<$text text="That includes"/>
+<<say-list "widgets macros [[whatever else]]">>
+
+[ ^^1^^]: #Frodo
+[image]: Frodo.svg

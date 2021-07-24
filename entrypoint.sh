@@ -11,8 +11,16 @@ WIKI_DIR=${DATA_DIR}/wiki
 if [ ! -f ${WIKI_DIR}/tiddlywiki.info ]
 then
     echo "[INFO] $(date -Iseconds): Initializing wiki directory on first startup"
-    mkdir -p $WIKI_DIR
-    tiddlywiki $WIKI_DIR --init server
+
+    if [ -n "$TIDDLYWIKI_BARE" ]
+    then
+        # use tiddlywiki to init wiki directory
+        mkdir -p $WIKI_DIR
+        tiddlywiki $WIKI_DIR --init server
+    else
+        # use wiki template to init wiki directory
+        mv -f /template/* /wiki/
+    fi
 fi
 
 # parse auth config from environment variables
@@ -30,13 +38,14 @@ else
 fi
 
 # fix permissions for tiddly user
-chown tiddly ${WIKI_DIR}
+chown -R tiddly ${WIKI_DIR}
 chmod -R u+rw ${WIKI_DIR}
 
 # start tiddlywiki unless directed to do something else
 if [ -z "$@" ]
 then
     # drop root permissions by switch to tiddly user
-    exec su -m tiddly -c "tiddlywiki ${WIKI_DIR} --listen host=0.0.0.0 port=8080 gzip=yes debug-level=$TIDDLYWIKI_DEBUG $AUTH_ARGS" else
-    exec $@
+    exec su -m tiddly -c "tiddlywiki ${WIKI_DIR} --listen host=0.0.0.0 port=8080 gzip=yes debug-level=$TIDDLYWIKI_DEBUG $AUTH_ARGS"
+else
+    exec "$@"
 fi
