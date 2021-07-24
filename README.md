@@ -27,13 +27,13 @@ docker run -it --init \
     ghcr.io/mrzzy/tiddlywiki-node:5.1.23
 ```
 
-## Volume / Storage
+## Storage
 Tiddlywiki will persist tiddlers from the Docker container inside the `/wiki/` directory
-- Mount / Persist `\wiki` the preserve tiddlers accross container restarts
+- Mount / Persist `\wiki` the preserve tiddlers across container restarts
 
 ## Configuration
 Configuration of the container is done via environment variables:
-| Environment Variable | Descripition |
+| Environment Variable | Description |
 | --- | --- |
 | `TIDDLYWIKI_AUTH_HEADER` | If set, configures the http header that tiddly uses to obtain the requester's username. |
 | `TIDDLYWIKI_READERS` | Comma separated list of usernames allowed to read from this wiki. |
