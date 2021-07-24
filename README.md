@@ -16,7 +16,7 @@ Bundles Tiddlywiki the following plugins:
   - Outliner Plugin
 
 
-### Usage
+## Usage
 Start Tiddlywiki NodeJS container listening on port `8080`:
 ```
 docker run -it --init \
@@ -24,7 +24,7 @@ docker run -it --init \
     -e TIDDLYWIKI_USERNAME=mrzzy \
     -e TIDDLYWIKI_PASSWORD=changethis \
     -v /path/to/your/wiki:/wiki \
-    ghcr.io/mrzzy/tiddlywiki-node:5.1.23
+    ghcr.io/mrzzy/tiddlywiki-node:latest
 ```
 
 ## Storage
@@ -40,3 +40,9 @@ Configuration of the container is done via environment variables:
 | `TIDDLYWIKI_WRITERS` | Comma separated list of usernames allowed to read from this wiki. |
 | `TIDDLYWIKI_USERNAME` & `TIDDLYWIKI_PASSWORD` | If set, configures tiddlywiki to use basic http authentication. |
 | `TIDDLYWIKI_DEBUG` | Whether to configure tiddlywiki to output debugging logs |
+
+## Versioning
+Containers are tagged with tags in the format:
+- `TIDDLYWIKI_VERSION+IMAGE VERSION`: eg. `5.1.23+0.1.0`
+- `TIDDLYWIKI_VERSION`: version of tiddywiki used in the container.
+- `IMAGE_VERSION`: container specific version suffix as a [Sementic Version](https://semver.org/)
