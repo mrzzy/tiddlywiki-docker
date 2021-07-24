@@ -17,14 +17,14 @@ Bundles Tiddlywiki the following plugins:
 
 
 ## Usage
-Start Tiddlywiki NodeJS container listening on port `8080`:
+Start tiddywiki docker container listening on port `8080`:
 ```
 docker run -it --init \
     -p 8080:8080  \
     -e TIDDLYWIKI_USERNAME=mrzzy \
     -e TIDDLYWIKI_PASSWORD=changethis \
     -v /path/to/your/wiki:/wiki \
-    ghcr.io/mrzzy/tiddlywiki-node:latest
+    ghcr.io/mrzzy/tiddlywiki:latest
 ```
 
 ## Storage
