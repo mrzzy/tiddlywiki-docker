@@ -31,6 +31,7 @@ fi
 
 # fix permissions for tiddly user
 chown tiddly ${WIKI_DIR}
+chmod -R u+rw ${WIKI_DIR}
 
 # start tiddlywiki unless directed to do something else
 if [ -z "$@" ]
