@@ -2,6 +2,29 @@
 Tiddlywiki Node.js a docker container.
 
 
+## Introduction
+Tiddlywiki on Node.js wrapped in docker container with some quality of life features:
+- exposes [configuration](#Configuration) via environment variables for easy configuration.
+- automatically bootstraps a [wiki in folder structure](https://www.google.com/search?channel=fs&client=ubuntu&q=tiddlywiki+folder+format)
+    if one is not yet present.
+- optionally bootstraps a wiki with a no. of quality of life plugins:
+
+| Plugin | Description |
+| --- | --- |
+| Codemirror | Replaces the default editor with one powered by Codemirror. |
+| Markdown | Enables writing of tiddlers in Markdown instead of just Wikitext. |
+| Katex | Enables the rendering of math expressions in Latex. |
+| tw5-relink | Fixes links when tiddlers are renamed. |
+| tw5-extendedit | Autocompletion of tiddler names when linking with `[[` |
+| edit-autolist | Automatically inserts `*` and indents when creating lists in Wikitext. |
+| Notebook theme | Makes Tiddlywiki pretty with the notebook theme. |
+| TWCrossLinks | Shows links from other tiddlers at the bottom of each tiddler. |
+| Context Plugin | Shows the surrounding context when performing a full text search. |
+
+> Disable plugin bootstraping by setting `TIDDLYWIKI_BARE` environment variable.  
+> This will direct `tiddlywiki-docker` to create the default bare bones wiki.
+
+
 ## Usage
 Start tiddlywiki docker container listening on port `8080`:
 ```
@@ -28,6 +51,6 @@ Configuration of the container is done via environment variables:
 
 ## Versioning
 Containers are tagged with tags in the format:
-- `TIDDLYWIKI_VERSION+IMAGE VERSION`: eg. `5.1.23-0.1.0`
+- `TIDDLYWIKI_VERSION+IMAGE VERSION`: eg. `5.1.23-0.0.1`
 - `TIDDLYWIKI_VERSION`: version of tiddlywiki used in the container.
 - `IMAGE_VERSION`: container specific version suffix as a [Sementic Version](https://semver.org/)
