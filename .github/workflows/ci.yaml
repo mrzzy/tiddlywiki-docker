@@ -14,4 +14,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: "Build tiddlywiki-docker"
-        run: make ghcr.io/mrzzy/tiddlywiki-docker
+        run: make ghcr.io/mrzzy/tiddlywiki
