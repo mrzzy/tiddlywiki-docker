@@ -15,7 +15,7 @@ RUN addgroup --gid 12820 tiddly \
 
 # install tiddlywiki with npm
 ARG TIDDLYWIKI_VERSION=5.1.23
-RUN npm install -g tiddlywiki@5.1.23
+RUN npm install -g tiddlywiki@${TIDDLYWIKI_VERSION}
 
 # setup directory for wiki
 ENV WIKI_DIR=/wiki

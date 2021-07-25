@@ -4,7 +4,7 @@
 #
 
 
-TIDDLYWIKI_VERSION:=5.1.23
+TIDDLYWIKI_VERSION:=5.1.22
 IMAGE_VERSION:=0.0.1
 DOCKER_USER:=mrzzy
 DOCKER_REPO:=ghcr.io
@@ -15,7 +15,8 @@ IMAGE_TAG:=$(TIDDLYWIKI_VERSION)-$(IMAGE_VERSION)
 .DEFAULT: $(IMAGE)
 
 $(IMAGE): Dockerfile entrypoint.sh
-	docker build -f $< -t $(IMAGE):$(IMAGE_TAG) .
+	docker build --build-arg TIDDLYWIKI_VERSION=$(TIDDLYWIKI_VERSION) \
+		-f $< -t $(IMAGE):$(IMAGE_TAG) .
 
 run:
 	docker run -it --init \
