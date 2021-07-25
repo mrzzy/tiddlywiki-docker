@@ -51,6 +51,6 @@ Configuration of the container is done via environment variables:
 
 ## Versioning
 Containers are tagged with tags in the format:
-- `TIDDLYWIKI_VERSION+IMAGE VERSION`: eg. `5.1.23-0.0.1`
+- `TIDDLYWIKI_VERSION-IMAGE VERSION`: eg. `5.1.23-0.0.1`
 - `TIDDLYWIKI_VERSION`: version of tiddlywiki used in the container.
 - `IMAGE_VERSION`: container specific version suffix as a [Sementic Version](https://semver.org/)
