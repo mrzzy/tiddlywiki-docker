@@ -1,0 +1,16 @@
+#
+# tiddlywiki-docker
+# ci pipeline to ensure that the container builds
+# 
+
+name: "CI: Build tiddlywiki-docker"
+on:
+  push: {}
+jobs:
+  build:
+    name: "Build tiddlywiki-docker"
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Build tiddlywiki-docker"
+        run: make

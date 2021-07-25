@@ -27,8 +27,7 @@ COPY plugins /plugins
 COPY themes /themes
 
 # define plugin, themes search path
-ENV TIDDLYWIKI_PLUGIN_PATH="/plugins:/themes"
-ENV TIDDLYWIKI_THEME_PATH="/themes"
+ENV TIDDLYWIKI_PLUGIN_PATH="/plugins:/themes" TIDDLYWIKI_THEME_PATH="/themes"
 
 # copy entrypoint script
 COPY entrypoint.sh .
