@@ -1,0 +1,17 @@
+#
+# tiddlywiki-docker
+# cd pipeline to push container to github container registery
+# 
+
+name: "CD: Publish tiddlywiki-docker to GHCR"
+on:
+  push:
+    branches: [main]
+jobs:
+  build-push:
+    name: "Build & Push tiddlywiki-docker"
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Build tiddlywiki-docker"
+        run: make ghcr.io/mrzzy/tiddlywiki-docker
