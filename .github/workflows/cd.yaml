@@ -15,23 +15,14 @@ jobs:
         with:
           # required to retrieve all tags
           fetch-depth: '0'
-      - name: "Get image version"
-        id: get-version
-        run: |
-          IMAGE_VERSION=$(git describe | tr -d "v")
-          echo "::set-output name=version::$IMAGE_VERSION"
+      - name: "Get version from tag and set IMAGE_VERSION env var"
+        run: echo "IMAGE_VERSION=$(git describe | tr -d 'v')" >> $GITHUB_ENV
       - name: "Build tiddlywiki-docker"
-        env:
-          IMAGE_VERSION: ${{ steps.get-version.version }}
         run: |
           make
       - name: "Authenticate with GHCR"
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
       - name: "Publish image to GHCR (latest)"
-        env:
-          IMAGE_VERSION: ${{ steps.get-version.version }}
         run: make push-latest
-      - name: "Publish image to GHCR (version: ${{ steps.get-version.version }})"
-        env:
-          IMAGE_VERSION: ${{ steps.get-version.version }}
+      - name: "Publish image to GHCR (version: ${{ env.IMAGE_VERSION }})"
         run: make push
