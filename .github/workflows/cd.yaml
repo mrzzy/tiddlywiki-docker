@@ -5,8 +5,7 @@
 
 name: "CD: Publish tiddlywiki-docker to GHCR"
 on:
-  push:
-    branches: [main]
+  push: {}
 jobs:
   build-push:
     name: "Build & Push tiddlywiki-docker"
