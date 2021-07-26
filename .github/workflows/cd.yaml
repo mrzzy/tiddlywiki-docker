@@ -1,23 +1,28 @@
 #
 # tiddlywiki-docker
 # cd pipeline to build and publish container
-# 
+#
 
 name: "CD: Publish tiddlywiki-docker to GHCR"
 on:
-  push:
-    branches: [main]
+  push: {}
 jobs:
   build-push:
     name: "Build & Push tiddlywiki-docker"
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+        with:
+          # required to retrieve all tags
+          fetch-depth: '0'
+      - name: "Get version from tag and set IMAGE_VERSION env var"
+        run: echo "IMAGE_VERSION=$(git describe | tr -d 'v')" >> $GITHUB_ENV
       - name: "Build tiddlywiki-docker"
-        run: make
+        run: |
+          make
       - name: "Authenticate with GHCR"
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
       - name: "Publish image to GHCR (latest)"
         run: make push-latest
-      - name: "Publish image to GHCR (versioned)"
+      - name: "Publish image to GHCR (version: ${{ env.IMAGE_VERSION }})"
         run: make push
