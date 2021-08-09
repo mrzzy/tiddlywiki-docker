@@ -27,14 +27,11 @@ fi
 if [ -n "$TIDDLYWIKI_AUTH_HEADER" ]
 then
     echo "[INFO] $(date -Iseconds): Starting tiddlywiki with header authentication"
-    AUTH_ARGS="\
-        authenticated-user-header=$TIDDLYWIKI_AUTH_HEADER \
-        readers=${TIDDLYWIKI_READERS:-(authenticated)} \
-        writers=${TIDDLYWIKI_WRITERS:-(authenticated)}"
+    AUTH_ARGS="authenticated-user-header=$TIDDLYWIKI_AUTH_HEADER readers='${TIDDLYWIKI_READERS:-(authenticated)}' writers='${TIDDLYWIKI_WRITERS:-(authenticated)}'"
 elif [ -n "$TIDDLYWIKI_USERNAME" ] && [ -n "$TIDDLYWIKI_PASSWORD" ]
 then
     echo "[INFO] $(date -Iseconds): Starting tiddlywiki with basic authentication"
-    AUTH_ARGS="username=$TIDDLYWIKI_USERNAME password=$TIDDLYWIKI_PASSWORD"
+    AUTH_ARGS="username='$TIDDLYWIKI_USERNAME' password='$TIDDLYWIKI_PASSWORD'"
 else
     echo "[WARNING] $(date -Iseconds): Starting tiddlywiki with Anonymous Access"
     AUTH_ARGS=""
@@ -48,6 +45,7 @@ chmod -R u+rw ${WIKI_DIR}
 if [ -z "$@" ]
 then
     # drop root permissions by switch to tiddly user
+    echo "tiddlywiki ${WIKI_DIR} --listen host=0.0.0.0 port=8080 gzip=yes debug-level='$TIDDLYWIKI_DEBUG' $AUTH_ARGS"
     exec su -m tiddly -c "tiddlywiki ${WIKI_DIR} --listen host=0.0.0.0 port=8080 gzip=yes debug-level=$TIDDLYWIKI_DEBUG $AUTH_ARGS"
 else
     exec "$@"
