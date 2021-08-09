@@ -27,7 +27,10 @@ fi
 if [ -n "$TIDDLYWIKI_AUTH_HEADER" ]
 then
     echo "[INFO] $(date -Iseconds): Starting tiddlywiki with header authentication"
-    AUTH_ARGS="authenticated-user-header=$TIDDLYWIKI_USERNAME readers=$TIDDLYWIKI_READERS writers=$TIDDLYWIKI_WRITERS"
+    AUTH_ARGS="\
+        authenticated-user-header=$TIDDLYWIKI_USERNAME \
+        readers=${TIDDLYWIKI_READERS:-(authenticated)} \
+        writers=${TIDDLYWIKI_WRITERS:-(authenticated)}"
 elif [ -n "$TIDDLYWIKI_USERNAME" ] && [ -n "$TIDDLYWIKI_PASSWORD" ]
 then
     echo "[INFO] $(date -Iseconds): Starting tiddlywiki with basic authentication"
