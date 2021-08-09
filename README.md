@@ -43,8 +43,8 @@ Configuration of the container is done via environment variables:
 | Environment Variable | Description |
 | --- | --- |
 | `TIDDLYWIKI_AUTH_HEADER` | If set, configures the http header that tiddly uses to obtain the requester's username. |
-| `TIDDLYWIKI_READERS` | Comma separated list of usernames allowed to read from this wiki. |
-| `TIDDLYWIKI_WRITERS` | Comma separated list of usernames allowed to read from this wiki. |
+| `TIDDLYWIKI_READERS` | Comma separated list of usernames allowed to read from this wiki. Use special token `(anon)` or `(authenticated)` to allow all users or all authenticated users to read from the wiki respectively. |
+| `TIDDLYWIKI_WRITERS` | Comma separated list of usernames allowed to write to this wiki. Use special token `(anon)` or `(authenticated)` to allow all users or all authenticated users to write the wiki respectively. |
 | `TIDDLYWIKI_USERNAME` & `TIDDLYWIKI_PASSWORD` | If set, configures tiddlywiki to use basic http authentication. |
 | `TIDDLYWIKI_DEBUG` | Whether to configure tiddlywiki to output debugging logs. |
 | `TIDDLYWIKI_BARE` | If set does initizalise `/wiki` with the built in template. Instead initizalise `/wiki` as a bare bones tiddlywiki. |
