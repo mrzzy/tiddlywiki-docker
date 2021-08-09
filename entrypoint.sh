@@ -46,7 +46,7 @@ if [ -z "$@" ]
 then
     # drop root permissions by switch to tiddly user
     echo "tiddlywiki ${WIKI_DIR} --listen host=0.0.0.0 port=8080 gzip=yes debug-level='$TIDDLYWIKI_DEBUG' $AUTH_ARGS"
-    exec su -m tiddly -c "tiddlywiki ${WIKI_DIR} --listen host=0.0.0.0 port=8080 gzip=yes debug-level=$TIDDLYWIKI_DEBUG $AUTH_ARGS"
+    exec su -m tiddly -c "tiddlywiki ${WIKI_DIR} --listen host=0.0.0.0 port=8080 gzip=yes debug-level=${TIDDLYWIKI_DEBUG:-none} $AUTH_ARGS"
 else
     exec "$@"
 fi
