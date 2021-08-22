@@ -19,9 +19,12 @@ then
         tiddlywiki $WIKI_DIR --init server
     else
         # use wiki template to init wiki directory
-        mv -f /template/* /wiki/
+        mv -f /template/* $WIKI_DIR/
     fi
 fi
+
+# sync tiddlywiki.info to ensure new plugins / templates get loaded by the wiki
+mv /template/tiddlywiki.info $WIKI_DIR/
 
 # parse auth config from environment variables
 if [ -n "$TIDDLYWIKI_AUTH_HEADER" ]
