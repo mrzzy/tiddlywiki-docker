@@ -18,7 +18,9 @@
 
         "notebook/plugins/notebook-mobile",
 
-        "tw5-contextplugin/plugins/contextPlugin"
+        "tw5-contextplugin/plugins/contextPlugin",
+
+        "TiddlyWikiFormula/plugins/ebalster_formula"
     ],
     "themes": [
         "tiddlywiki/vanilla",
