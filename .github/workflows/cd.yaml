@@ -5,7 +5,11 @@
 
 name: "CD: Publish tiddlywiki-docker to GHCR"
 on:
-  push: {}
+  push: 
+    branches:
+      - main
+    tags:
+      - "v*"
 jobs:
   build-push:
     name: "Build & Push tiddlywiki-docker"
@@ -16,7 +20,10 @@ jobs:
           # required to retrieve all tags
           fetch-depth: '0'
       - name: "Get version from tag and set IMAGE_VERSION env var"
-        run: echo "IMAGE_VERSION=$(git describe | tr -d 'v')" >> $GITHUB_ENV
+        run: |
+          git tag -l
+          echo "IMAGE_VERSION=$(git describe $GITHUB_SHA | tr -d 'v')"
+          echo "IMAGE_VERSION=$(git describe $GITHUB_SHA | tr -d 'v')" >> $GITHUB_ENV
       - name: "Build tiddlywiki-docker"
         run: |
           make
