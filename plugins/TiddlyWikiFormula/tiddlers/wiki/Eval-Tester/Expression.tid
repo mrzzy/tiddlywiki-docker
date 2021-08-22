@@ -1,0 +1,6 @@
+created: 20171211021239925
+modified: 20200428232954882
+title: Eval-Tester/Expression
+type: text/vnd.tiddlywiki
+
+round(5*sum([tag[Expenses]get[value]]), 2) 

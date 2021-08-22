@@ -1,38 +1,37 @@
 {
     "description": "Basic client-server edition",
     "plugins": [
-        "tiddlywiki/tiddlyweb",
         "tiddlywiki/filesystem",
-        "tiddlywiki/highlight",
-        "tiddlywiki/codemirror",
-        "tiddlywiki/browser-storage",
-        "tiddlywiki/katex",
-        "tiddlywiki/markdown",
-        "tiddlywiki/mobiledragdrop",
-
-        "tw5-relink/plugins/relink",
-        "tw5-relink/plugins/relink-markdown",
-        "tw5-relink/plugins/relink-titles",
-
-        "tw5-extendedit/plugin",
-
-        "notebook/plugins/notebook-mobile",
-
-        "tw5-contextplugin/plugins/contextPlugin",
-
-        "TiddlyWikiFormula/plugins/ebalster_formula"
+        "tiddlywiki/tiddlyweb"
     ],
     "themes": [
         "tiddlywiki/vanilla",
-        "tiddlywiki/snowwhite",
-
-        "notebook/themes/notebook"
+        "tiddlywiki/snowwhite"
     ],
     "build": {
         "index": [
             "--rendertiddler",
             "$:/plugins/tiddlywiki/tiddlyweb/save/offline",
             "index.html",
+            "text/plain"
+        ],
+        "externalimages": [
+            "--savetiddlers",
+            "[is[image]]",
+            "images",
+            "--setfield",
+            "[is[image]]",
+            "_canonical_uri",
+            "$:/core/templates/canonical-uri-external-image",
+            "text/plain",
+            "--setfield",
+            "[is[image]]",
+            "text",
+            "",
+            "text/plain",
+            "--rendertiddler",
+            "$:/plugins/tiddlywiki/tiddlyweb/save/offline",
+            "externalimages.html",
             "text/plain"
         ],
         "static": [

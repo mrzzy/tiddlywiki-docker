@@ -1,0 +1,26 @@
+created: 20171214064708742
+list: 
+modified: 20180114193336624
+tags: BuiltInFunction
+title: SWITCH Function
+type: text/vnd.tiddlywiki
+
+The `SWITCH` function takes a test value, followed by some pairs of case values and result values, and an optional default value.  The function returns the result after the first case value equal to the test value.  If no case value equals the test value, the function returns the default value (or undefined if none was provided).
+
+```
+SWITCH(test, case1, result1, case2, result2, ... [default])
+```
+
+For example, we can display the name of the current weekday with this formula:
+
+```
+switch(weekday(now),
+  1, "Sun", 2, "Mon", 3, "Tue", 4, "Wed",
+  5, "Thu", 6, "Fri", 7, "Sat",
+  "ERROR")
+```
+
+(= switch(weekday(now),
+  1, "Sun", 2, "Mon", 3, "Tue", 4, "Wed",
+  5, "Thu", 6, "Fri", 7, "Sat",
+  "ERROR") =)

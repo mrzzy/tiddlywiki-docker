@@ -1,0 +1,47 @@
+created: 20171216220518577
+modified: 20180114191900285
+tags: Widget
+title: FormulaVarsWidget
+type: text/vnd.tiddlywiki
+
+!Introduction
+
+The `<$formula-vars>` widget works like TiddlyWiki's `$vars` widget, except each attribute is computed as a formula before being assigned to a variable.
+
+This offers some advantages over using `$vars` with [[Formulas as Tag Attributes]].
+
+
+!Attributes
+
+|Attribute|Description|h
+|{attributes not starting with $}|Each attribute name specifies a variable name.  The attribute value is evaluated as a formula and the result is assigned to the variable.|
+|$numberFormat|A format for numbers in the [[numeral.js|http://numeraljs.com/]] style.<br/>Defaults to variable `<<formulaDateFormat>>`.|
+|$precision|Numbers will include this many significant digits. If no number is specified, the number will be shown at maximum precision.<br/>Defaults to variable `<<formulaPrecision>>`.|
+|$fixed|Numbers will include this many digits after the decimal point.<br/>Overrides toPrecision. Defaults to variable `<<formulaFixed>>`.|
+|$dateFormat|A format string for dates that works like the one in TiddlyWiki's `<<now>>` macro.<br/>Defaults to variable `<<formulaDateFormat>>`.|
+|$noRebuild|__Experimental__.  Prevents full DOM rebuild when variables change.  This can boost performance substantially but will cause certain elements not to refresh.|
+
+
+!Examples
+
+```
+<$formula-vars
+  catch="14+8"
+  fahrenheit="6^3+5^3+4^3+3^3+2^3+11">
+
+* Catch-<<catch>>
+* Fahrenheit <<fahrenheit>>
+
+</$formula-vars>
+```
+
+<<<
+<$formula-vars
+  catch="14+8"
+  fahrenheit=6^3+5^3+4^3+3^3+2^3+11>
+
+* Catch-<<catch>>
+* Fahrenheit <<fahrenheit>>
+
+</$formula-vars>
+<<<
