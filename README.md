@@ -20,6 +20,7 @@ Tiddlywiki on Node.js wrapped in docker container with some quality of life feat
 | Notebook theme | Makes Tiddlywiki pretty with the notebook theme. |
 | TWCrossLinks | Shows links from other tiddlers at the bottom of each tiddler. |
 | Context Plugin | Shows the surrounding context when performing a full text search. |
+| TiddlyWikiFormula | Allows Tiddlywiki to evaluates Excel like formulas. |
 
 > Disable plugin bootstraping by setting `TIDDLYWIKI_BARE` environment variable.  
 > This will direct `tiddlywiki-docker` to create the default bare bones wiki.
