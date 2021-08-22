@@ -1,0 +1,210 @@
+created: 20171212025227476
+modified: 20180211214438221
+title: Functions
+type: text/vnd.tiddlywiki
+
+\define small(name) <code style="font-size: 65%">$name$</code>
+
+!Introduction
+
+''Functions'' are named computations that can be applied to different kinds of data.  The syntax is as follows:
+
+```
+function_name(<argument>, <argument>...)
+```
+
+Some functions have multiple names, often to help them match up with popular spreadsheet software.  Note that function names are case-insensitive.
+
+
+!Functions
+
+|!Wiki Data & Interpretation|<|<|<|
+|!Function|!Args|!Result|!Summary|
+| `transclude`|`(title)`| text |Transclude a tiddler's text.|
+|~|`(t,f)`|~|Transclude a tiddler's field's text.|
+| <<small transclude_index>>|`(t,i)`| text |Transclude a text item from a data tiddler.|
+| `variable`|`(name)`| text |Get the text value of a variable.|
+| `datum`|`(text)`| * |Interpret some text as a [[Datum]].|
+|!Arithmetic & Operators|<|<|<|
+|!Function|!Args|!Result|!Summary|
+| `uplus`|`(a)`| * |Result is `a`.<br/>Same as `(+a)`.|
+| `uminus`|`(a)`|number|Multiply `a` by `-1`.<br/>Same as `(-a)`.|
+| `add`|`(a, b)`|number|Add numbers `a` and `b`.<br/>Same as `(a+b)`.|
+| `sub`|`(a, b)`|number|Subtract `b` from `a`.<br/>Same as `(a-b)`.|
+| `subtract`|~|~|~|
+| `minus`|~|~|~|
+| `mul`|`(a, b)`|number|Multiply numbers `a` and `b`.<br/>Same as `(a*b)`.|
+| `multiply`|~|~|~|
+| `div`|`(a, b)`|number|Divide `a` by `b`.<br/>Same as `(a/b)`.|
+| `divide`|~|~|~|
+| `quotient`|~|~|~|
+| `mod`|`(a,b)`|number|Get the remainder when dividing `a/b`.|
+| `modulo`|~|~|~|
+|!Math|<|<|<|
+|!Function|!Args|!Result|!Summary|
+| `abs`|`(a)`|number|Return `a`'s absolute value.|
+| `sign`|`(a)`|number|1 for positive `a`, -1 for negative, 0 for 0.|
+| `sum`|`(a...)`|number|Sum up the arguments (including arrays).|
+| `product`|`(a,b..)`|number|Multiply the arguments.|
+| `min`|`(a,b..)`|number|Get the lowest number.|
+| `max`|`(a,b..)`|number|Get the highest number.|
+| `clamp`|`(a,L,H)`|number|Limit `a` to a range from min `L` to max `H`.|
+| `sqrt`|`(a)`|number|Get the square root of `a`.|
+| `cbrt`|`(a)`|number|Get the cube root of `a`.|
+| `gcd`|`(a,b)`|number|Get the greatest common divisor.|
+| `lcm`|`(a,b)`|number|Get the least common multiple.|
+| `mix`|`(a,b,x)`|number|Get a value between `a` and `b`.<br/>Same as `((1-x)*a + x*b)`.|
+| `step`|`(a,x)`|number|`0` if `x<a`, `1` otherwise. (GLSL-inspired.)|
+| `smoothstep`|`(a,b,x)`|number|As `step` but ease from `0` to `1` as `x` moves from `a` to `b`. (GLSL-inspired.)|
+|!Math (rounding)|<|<|<|
+|!Function|!Args|!Result|!Summary|
+| `round`|`(a)`|number|Round `a` to the nearest integer.|
+|~|`(a, n)`|number|Round `a` to `n` digits.|
+| `roundup`|`(a)`|number|Round `a` away from zero.|
+|~|`(a, n)`|number|Round `a` away from zero, to `n` digits.|
+| `rounddown`<br/>or `trunc`|`(a)`|number|Round `a` toward zero.|
+|~|`(a, n)`|number|Round `a` toward zero, to `n` digits.|
+| `floor`|`(a)`|number|Round `a` down to the nearest integer.|
+|~|`(a, m)`|number|Round `a` down to a multiple of `m`.|
+| `ceil`|`(a)`|number|Round `a` up to the nearest integer.|
+|~|`(a, m)`|number|Round `a` up to a multiple of `m`.|
+| `fract`|`(a)`|number|Get the fractional part of `a`.|
+|!Math (exponential)|<|<|<|
+|!Function|!Args|!Result|!Summary|
+| `_e`||number|Euler's number ''e'' (approx. 2.71828).|
+| `pow`|`(a, b)`|number|Raise base `a` to the power of `b`.|
+| `power`|~|~|~|
+| `log`|`(a, b)`|number|Get the logarithm of `a` in base `b`.|
+| `exp`|`(a)`|number|Raise ''e'' to the power of `a`.|
+| `ln`|`(a)`|number|Get the natural logarithm of `a` (base ''e'').|
+| `log2`|`(a, b)`|number|Get the logarithm of `a` in base 2.|
+| `log10`|`(a, b)`|number|Get the logarithm of `a` in base 10.|
+| `expm1`|`(a)`|number|Get `exp(a) - 1`, more precisely.|
+| `log1p`|`(a)`|number|Get `log(a + 1)`, more precisely.|
+|!Math (trigonometry)|<|<|<|
+|!Function|!Args|!Result|!Summary|
+| `pi`||number|Get ''pi'' (''&pi;'', approx. 3.14159).|
+| `degrees`|`(a)`|number|Convert radians to degrees: `180*a/pi`.|
+| `radians`|`(a)`|number|Convert degrees to radians: `pi*a/180`.|
+| `sin`|`(a)`|number|Get the sine of `a`.|
+| `cos`|`(a)`|number|Get the cosine of `a`.|
+| `tan`|`(a)`|number|Get the tangent of `a`.|
+| `sec`|`(a)`|number|Get the secant, `1/cos(a)`.|
+| `csc`|`(a)`|number|Get the cosecant, `1/sin(a)`.|
+| `cot`|`(a)`|number|Get the cotangent, `1/tan(a)`.|
+| [`a`]`sin`[`h`]|`(a)`|number|Get the [arc and/or hyperbolic] sine.|
+| [`a`]`cos`[`h`]|`(a)`|number|Get the [arc and/or hyperbolic] cosine.|
+| [`a`]`tan`[`h`]|`(a)`|number|Get the [arc and/or hyperbolic] tangent.|
+| [`a`]`sec`[`h`]|`(a)`|number|Get the [arc and/or hyperbolic] secant.|
+| [`a`]`csc`[`h`]|`(a)`|number|Get the [arc and/or hyperbolic] cosecant.|
+| [`a`]`cot`[`h`]|`(a)`|number|Get the [arc and/or hyperbolic] cotangent.|
+| `atan2`|`(y,x)`|number|Get the arctangent of `y`/`x`.<br/>This is useful for computing angles.|
+|!Math (Statistical)|<|<|<|
+|!Function|!Args|!Result|!Summary|
+| `rand`|`()`|number|Get a random number between 0 and 1.|
+| `random`|~|~|~|
+| <<small randbetween>>|`(a, b)`|number|Get a random number between `a` and `b`.|
+| `average`|`(a...)`|number|Average the arguments (including arrays).|
+| `percent`|`(a)`|percent|Return `a/100` as a percentage.|
+|!Strings & Text|<|<|<|
+|!Function|!Args|!Result|!Summary|
+| `t`|`(a)`|text|Turn `a` into text. (Often automatic.)|
+| `value`|`(t)`|number|Turn `t` into a number. (Often automatic.)|
+| `cat`|`(a, b)`|text|Append `a` and `b` as text.<br/>Same as `(a&b)`.|
+| <<small concatenate>>|~|~|~|
+| `len`|`(text)`|number|Get the length of `text` in characters.|
+| `mid`|`(t,i,n)`|text|Get `n` characters from `t` starting at the `i`th character.|
+| `substr`|~|~|~|
+| `substitute`|`(t,a,b)`|text|Replace any `a` in `t` with `b`.|
+| `join`|`(d,...)`|text|Join arrays & values into text, with `d` inserted between each element.|
+| `textjoin`|`(d,a..)`|text|As `join` but if `a` is true, omit empty values.|
+| `split`|`(t,d)`|text|Split `t` into an array, starting a new element whenever `d` appears.|
+| `trim`|`(t)`|text|Remove whitespace from the beginning and end of `t`.|
+|!Regular Expressions|<|<|<|
+|!Function|!Args|!Result|!Summary|
+| <<small regexreplace>>|`(s,R,b)`|text|Replace all `R` matches in `s` with `b`.|
+| <<small regexmatch>>|`(s,R)`|bool|Test whether `s` matches `R` at least once.|
+| <<small regexextract>>|`(s,R)`<br/>`(s,R,i)`|array|Get all `R` matches in `s`.|
+| <<small regexextract1>>|`(s,R,d)`<br/><<small (s,R,d,i)>>|text|Get the first `R` match in `s`.<br/>Result is `d` if there are no matches.|
+|!Note:| //`R` are regular expressions like in the `regexp` filter operator.<br/>These must be strings with double-escaping, ex. `"\\s*"`.<br/>Supply `i` to get the `i`th [[capture group|https://www.regular-expressions.info/brackets.html]] in the regex.// |<|<|
+|!Comparison|<|<|<|
+|!Function|!Args|!Result|!Summary|
+| `exact`|`(a,b)`|boolean|Test whether `a` and `b` are exactly equal.|
+|  `eq`|`(a, b)`|boolean|Test whether `a` and `b` are equal.|
+| `equal`|~|~|~|
+|  `ne`|`(a, b)`|boolean|Test whether `a` and `b` are not equal.|
+| `not_equal`|~|~|~|
+|  `gt`|`(a, b)`|boolean|Test whether `a` is greater than `b`.|
+| `greater`|~|~|~|
+| `gte`|`(a, b)`|boolean|Test whether `a` is greater than or equal to `b`.|
+| <<small greater_<br/>or_equal>>|~|~|~|
+|  `lt`|`(a, b)`|boolean|Tests whether `a` is less than `b`.|
+| `less`|~|~|~|
+| `lte`|`(a, b)`|boolean|Tests whether `a` is less than or equal to `b`.|
+| <<small less_or_equal>>|~|~|~|
+|!Logic|<|<|<|
+|!Function|!Args|!Result|!Summary|
+| `true`||boolean|The value TRUE.|
+| `false`||boolean|The value FALSE.|
+| `not`|`(a)`|boolean|Test if `a` is FALSE.|
+| `and`|`(a, b)`|boolean|Test if `a` and `b` are both TRUE.|
+| `or`|`(a, b)`|boolean|Test if one or both of `a` and `b` is TRUE.|
+| `xor`|`(a, b)`|boolean|Test if just one of `a` and `b` is TRUE.|
+|!Selection|<|<|<|
+|!Function|!Args|!Result|!Summary|
+|  `if`|`(q,a,b)`| * |If `q` is TRUE, return `a`, else `b`.|
+|  `iferror`|`(a, b)`| * |Return `a`, or `b` if there's an error with `a`.|
+|  `ifs`|`(...)`| * |Test-based select. See: [[IFS Function]]|
+|  `switch`|`(n...)`| * |Value-based select. See: [[SWITCH Function]]|
+|  `choose`|`(n...)`| * |Return the `n`th element (after `n`).|
+|!Arrays & Filter Results|<|<|<|
+|!Function|!Args|!Result|!Summary|
+| `array`|`(...)`|array|Put the items into an array. See [[Array Literal]].|
+| `map`|`(f,a)`| array |Compute [[Function]] `f` for every value in array `a`, producing a new array.|
+| `count`|`(a...)`|number|Count all non-empty items. Each array item is counted.|
+| `counta`|~|~|Count empty //and// non-empty items.|
+| `nth`|`(a,n)`| * |Get the `n`th item in array `a`.|
+| `first`|`(a)`| * |Get the first item in array `a`.|
+| `last`|`(a)`| * |Get the last item in array `a`.|
+|!Date & Time|<|<|<|
+|!Function|!Args|!Result|!Summary|
+| `now`||date|Get the current date and time.|
+| `date`|`(y,m,d)`|date|Make a date from `y`ear, `m`onth and `d`ay.|
+| `time`|`(h,m,s)`|date|Make a date from `h`our, `m`inute and `s`econd.|
+| `date`|`(stamp)`|date|Make a date from a TiddlyWiki timestamp.|
+| `tw_date`|~|~|~|
+| <<small to_tw_date>>|`(date)`|date|Make a TiddlyWiki timestamp from a date.|
+| `julian`|`(n)`|date|Convert a Julian day to a date.|
+| `to_julian`|`(date)`|number|Convert a date to a Julian day.|
+| `year`|`(date)`|number|Get the year from a date.|
+| `month`|`(date)`|number|Get the month number (1-12).|
+| `day`|`(date)`|number|Get the day of the month (1-31).|
+| `hour`|`(date)`|number|Get the hour from a date (0-23).|
+| `minute`|`(date)`|number|Get the minute from a date (0-59).|
+| `second`|`(date)`|number|Get the second from a date (0-59).|
+| <<small millisecond>>|`(date)`|number|Get the millisecond from a date (0-999).|
+| `weekday`|`(date)`|number|Get the day of the week starting Sun (1-53).|
+| `weeknum`|`(date)`|number|Get the week of the year (1-53).|
+| <<small isoweekday>>|`(date)`|number|Get the day of the week starting Mon (1-7).|
+| <<small isoweeknum>>|`(date)`|number|Get the ISO week of the year (0-52).|
+| `years`|`(d1,d2)`|number|Count the whole years from `d1` to `d2`.|
+| `months`|`(d1,d2)`|number|Count the whole months `d1` to `d2`.|
+| `days`|`(d1,d2)`|number|Total the days from `d1` to `d2`.|
+| `hours`|`(d1,d2)`|number|Total the hours from `d1` to `d2`.|
+| `minutes`|`(d1,d2)`|number|Total the minutes from `d1` to `d2`.|
+| `seconds`|`(d1,d2)`|number|Total the seconds from `d1` to `d2`.|
+| <<small milliseconds>>|`(d1,d2)`|number|Total the milliseconds from `d1` to `d2`.|
+| `add_years`|`(d1,n)`|number|Advance `d1` by `n` years.|
+| `add_months`|`(d1,n)`|number|Advance `d1` by `n` months.|
+| `add_days`|`(d1,n)`|number|Add `n` days to `d1`.|
+| `add_hours`|`(d1,n)`|number|Add `n` hours to `d1`.|
+| <<small add_minutes>>|`(d1,n)`|number|Add `n` minutes to `d1`.|
+| <<small add_seconds>>|`(d1,n)`|number|Add `n` seconds to `d1`.|
+| <<small add_<br/>milliseconds>>|`(d1,n)`|number|Add `n` milliseconds to `d1`.|
+| <<small is_leap_year>>|`(year)`|boolean|Test if `year` is a leap year with 366 days.|
+| <<small days_in_year>>|`(year)`|number|Count the days in `year` (365 or 366).|
+| <<small days_in_month>>|`(y,m)`|number|Count days in `y`ear & `m`onth (28-31).|
+
+!Defining new functions
+
+See [[Extending Formulas]].

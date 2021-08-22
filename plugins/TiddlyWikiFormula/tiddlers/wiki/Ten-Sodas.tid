@@ -1,0 +1,8 @@
+created: 20171212010911028
+modified: 20180106152746992
+tags: Expenses
+title: Ten-Sodas
+type: text/vnd.tiddlywiki
+value: (= 10 * {{Soda-Pop!!value}} =)
+
+Ten sodas are worth ${{!!value}}

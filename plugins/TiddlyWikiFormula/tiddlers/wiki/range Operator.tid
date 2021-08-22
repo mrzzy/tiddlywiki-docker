@@ -1,0 +1,9 @@
+created: 20171221184734665
+modified: 20200429022121272
+tags: [[Filter Operators]] [[Negatable Operators]]
+title: range Operator
+type: text/vnd.tiddlywiki
+
+The `range Operator` in this plugin has been removed in preference to the one in the TW core.
+
+See: https://tiddlywiki.com/#range%20Operator

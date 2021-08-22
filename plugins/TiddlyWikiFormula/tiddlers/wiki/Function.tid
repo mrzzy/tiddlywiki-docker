@@ -1,0 +1,18 @@
+created: 20180114194229835
+modified: 20180204014009693
+title: Function
+type: text/vnd.tiddlywiki
+
+A ''Function'' declared inside a formula uses this syntax:
+
+```
+function(<param>[,<param>...]):(<body>)
+```
+
+The function can be treated as a value and passed around normally or given a name using [[LET|LetConstruct]].  It can be called like a normal function (by putting parentheses after it).
+
+Functions must be called with the correct number of arguments and cannot be overloaded.
+
+When [[local variables|LocalVariable]] declared outside the function are used inside it, the values are [[captured|https://en.wikipedia.org/wiki/Closure_(computer_programming)]] and will be usable even if the function is called elsewhere.
+
+Functions defined in formulas are different from the [[built-in functions|BuiltInFunction]] provided by formulas.

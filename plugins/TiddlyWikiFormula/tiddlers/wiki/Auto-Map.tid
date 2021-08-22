@@ -1,0 +1,36 @@
+created: 20180107173851197
+modified: 20180204012007527
+tags: [[Formula Plugin]] [[Timer Plugin]] Demo
+title: Auto-Map
+type: text/vnd.tiddlywiki
+
+\define formulaFixed() 2
+
+\define point_x(pointvar) regexextract1(<<$pointvar$>>,'([^,]+),','0',1) 
+\define point_y(pointvar) regexextract1(<<$pointvar$>>,',([^,]+)','0',1) 
+
+This tiddler creates a dynamically-generated map of tiddlers in the host wiki which link directly or indirectly to the original one, [[Formula Plugin]].
+
+This program is an experiment in progress.  Its current implementation uses a large number of action-setfield to update the map each frame, which has proven too inefficient to perform well.
+
+Uses:
+
+* [[Formula Plugin]]
+* [[Timer Plugin]]
+* [[Condition Plugin]]
+
+{{Auto-Map/Controls}}
+
+{{Auto-Map/Render}}
+
+{{Auto-Map/Logic}}
+
+
+The moving parts:
+
+* [[State Tiddler|$:/temp/self-organizing-map]]
+* [[Auto-Map Debug]]
+* [[Auto-Map/Controls]]
+* [[Auto-Map/Render]]
+* [[Auto-Map/Logic]]
+* [[Auto-Map/Logic-Old]]

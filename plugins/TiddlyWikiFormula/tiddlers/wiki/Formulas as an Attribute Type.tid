@@ -1,0 +1,18 @@
+created: 20171216011600256
+modified: 20171229191746223
+tags: [[Planned Feature]]
+title: Formulas as an Attribute Type
+type: text/vnd.tiddlywiki
+
+Add support for the formula syntax as a tag or widget attribute.  As compared to the [[FormulaMacro]] this should improve performance and avoid "gotchas" with quoting.
+
+This is now discussed in [[Formulas as Tag Attributes]].
+
+
+!!Implementation
+
+Need to introduce a new Attribute Type.  Files to modify:
+
+* [[$:/core/modules/utils/parseutils.js]]
+* [[$:/core/modules/widgets/widget.js]]
+* [[$:/core/modules/parsers/wikiparser/wikiparser.js]] (doc only)

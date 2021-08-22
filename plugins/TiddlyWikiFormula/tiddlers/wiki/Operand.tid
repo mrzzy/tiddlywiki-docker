@@ -1,0 +1,23 @@
+bnf: <Transclusion> | <Parenthesized> | <FunctionCall> | <FilterRun> | <Variable> | <NumberLiteral> | <StringLiteral>
+created: 20171210081748019
+modified: 20180211214016104
+tags: Syntax
+title: Operand
+type: text/vnd.tiddlywiki
+
+An ''Operand'' may be:
+
+|Operand type|example|h
+|[[Parenthesized Expression]]|`(2+4)`|
+|[[Function Call]]|`add(2, 2)`|
+|[[Transclusion]]|`{{Apples!!count}}`|
+|[[Variable]]|`<<currentTiddler>>`|
+|[[Filter]]|`[tag[Expenses]get[value]]`|
+|[[Number Literal]]|`123.456` or `4` or `.001`|
+|[[String Literal]]|`"kittens"` or `'kittens'`|
+|[[Array Literal]]|`{1, 2, 3}`|
+|[[Regular Expression Literal]]|`/kittens/g`|
+|[[Cell Reference]]|`B3`|
+|[[Let Expression|LetConstruct]]|`let(x=2):(x+x)`|
+|[[Function]]|`function(x):(x*x)`|
+|[[Local Variable|LocalVariable]]|`myvar`|

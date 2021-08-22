@@ -1,0 +1,62 @@
+created: 20171222192325797
+modified: 20180211193507379
+tags: 
+title: Planned Changes
+type: text/vnd.tiddlywiki
+
+!! Major changes
+
+Features
+
+* Language-level foreach function or list comprehension? (as opposed to map)
+* Series computations
+** Dedicated: `series(i in [range[0,10]]):(x=2):(x=x*x+1):(x)` (too complicated?)
+** Chaining for: `for(i in [range[0,10]], x in series):(if(i=0):(2):(x*x+1)))`
+* Hashmap type ("dict"?)
+** Construction
+*** `dict(a=1, b=2, c=3)`
+** Access
+*** `myDict.label & myDict[myString]`
+** Importing as locals?
+* Syntactic support for arrays
+** Excel style literal `{1, 2, 3}`
+*** 2D array support?? (meh)
+** Access
+*** `myArray[1]` (1-based?)
+*** Consider conflict with filter syntax
+**** eg. `[tag[A]][otherArray[1]]`
+**** Maybe require parens in these cases.
+* Backtrace of LET definitions on error
+
+Architecture
+
+* Core-friendly support for formulas as attributes
+* Less distinction between lambda and builtin functions
+** Same call mechanism
+** Coercion wrapper node?
+* Less distinction between local/widget variables
+** Use bare identifier for both locals and stack-vars (giving locals priority)
+** Add "set" in addition to "let" ?
+** `<<var>>` syntax can be non-capturing version for SETs.
+** Proper transclusion implementation
+* Expressions may use local variables
+** No brackets required
+** Override TiddlyWiki variables?  (Necessary for proper transcludes)
+
+Changes
+
+* Smarter comparison of arrays
+
+Formatting
+
+* Add global format settings with clear defaults
+
+<<<
+Done
+
+* Regular expression literals (and coercion)
+* Attribute-Modules as a mod/patch plugin
+* Support closures in functions?
+* LET construct
+* Functions
+<<<
