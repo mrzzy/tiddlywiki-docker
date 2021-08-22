@@ -1,0 +1,58 @@
+created: 20171212223658588
+modified: 20180204012916975
+tags: Usage
+title: Formulas as Tag Attributes
+type: text/vnd.tiddlywiki
+
+Formulas can currently be used as attributes in HTML tags, widgets and by using the [[Formula Macro|FormulaMacro]].
+
+```
+<svg
+  width=<<formula 10*10>>
+  height=<<formula 10*10>>
+  viewBox="0 0 100 100">
+<circle cx=50 cy=50 r=<<formula 5*5>> />
+</svg>
+```
+
+<table><tr><td>
+<svg
+  width=<<formula 10*10>>
+  height=<<formula 10*10>>
+  viewBox="0 0 100 100">
+<circle cx=50 cy=50 r=<<formula 5*5>> />
+</svg>
+</td></tr></table>
+
+
+!!Direct Syntax
+
+A direct syntax is also possible, but requires modifications to the TiddlyWiki core.  It's shorter, avoids "gotchas" with quotes in formulas, and updates faster than the macro version.
+
+```
+<svg
+  width=(=10*10=)
+  height=(=10*10=)
+  viewBox="0 0 100 100">
+<circle cx=50 cy=50 r=(=5*5=) />
+</svg>
+```
+
+<table><tr><td>
+<svg
+  width=(=10*10=)
+  height=(=10*10=)
+  viewBox="0 0 100 100">
+<circle cx=50 cy=50 r=(=5*5=) />
+</svg>
+</td></tr></table>
+
+<<<
+To enable direct formulas-as-attributes syntax, drag-and-drop this "mod" plugin to your wiki, along with the modloader plugin:
+
+{{$:/plugins/ebalster/attribute-modules||$:/core/ui/Components/plugin-info}}
+
+{{$:/plugins/ebalster/modloader||$:/core/ui/Components/plugin-info}}
+
+<span style="color:red;">This is written as a "mod" for TiddlyWiki 5.1.15 and not guaranteed to work in all future updates.</span>  Official support in the TiddlyWiki core is being explored.
+<<<

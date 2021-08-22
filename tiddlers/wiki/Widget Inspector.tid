@@ -1,0 +1,13 @@
+created: 20171228034320667
+modified: 20171228034458060
+tags: 
+title: Widget Inspector
+type: text/vnd.tiddlywiki
+
+See the inspectors...
+
+;[[Widget Variable Inspector]]
+: Inspect variable get & set calls.
+
+;[[Widget Refresh Inspector]]
+: Inspect the internal (this/self) call graphs of each widget.
