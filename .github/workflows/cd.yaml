@@ -5,7 +5,11 @@
 
 name: "CD: Publish tiddlywiki-docker to GHCR"
 on:
-  push: {}
+  push: 
+    branches:
+      - main
+    tags:
+      - "v*"
 jobs:
   build-push:
     name: "Build & Push tiddlywiki-docker"
@@ -15,8 +19,13 @@ jobs:
         with:
           # required to retrieve all tags
           fetch-depth: '0'
-      - name: "Get version from tag and set IMAGE_VERSION env var"
-        run: echo "IMAGE_VERSION=$(git describe | tr -d 'v')" >> $GITHUB_ENV
+      - name: "Get version from git tag and set IMAGE_VERSION env var"
+        run: |
+          # force a fetch on git tags
+          # required as a workaround for actions/checkout not fetching tag annotations:
+          # https://github.com/actions/checkout/issues/290
+          git fetch --force --tags
+          echo "IMAGE_VERSION=$(git describe | tr -d 'v')" >> $GITHUB_ENV
       - name: "Build tiddlywiki-docker"
         run: |
           make
